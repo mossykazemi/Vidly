@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.UI.WebControls;
 
 namespace Vidly
 {
@@ -15,6 +14,7 @@ namespace Vidly
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapMvcAttributeRoutes();
+
 
             routes.MapRoute(
                 name: "Default",
