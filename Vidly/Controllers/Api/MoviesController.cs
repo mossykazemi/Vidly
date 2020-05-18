@@ -1,11 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using AutoMapper;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -58,12 +55,12 @@ namespace Vidly.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-                var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            if (movieInDb==null)
+            if (movieInDb == null)
                 return NotFound();
 
-                Mapper.Map(movieDto, movieInDb);
+            Mapper.Map(movieDto, movieInDb);
 
             _context.SaveChanges();
 
@@ -76,7 +73,7 @@ namespace Vidly.Controllers.Api
         {
             var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            if (movieInDb==null)
+            if (movieInDb == null)
                 return NotFound();
 
             _context.Movies.Remove(movieInDb);
