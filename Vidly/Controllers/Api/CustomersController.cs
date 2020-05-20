@@ -33,6 +33,7 @@ namespace Vidly.Controllers.Api
         public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
             if (customer == null)
                 return NotFound();
 
@@ -51,7 +52,6 @@ namespace Vidly.Controllers.Api
             _context.SaveChanges();
 
             customerDto.Id = customer.Id;
-
             return Created(new Uri(Request.RequestUri+"/"+customer.Id), customerDto);
         }
 
@@ -70,6 +70,7 @@ namespace Vidly.Controllers.Api
             Mapper.Map(customerDto,customerInDb);
 
             _context.SaveChanges();
+
             return Ok();
         }
 
